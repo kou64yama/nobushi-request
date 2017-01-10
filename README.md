@@ -1,5 +1,7 @@
 # NobushiRequest
 
+[![Build Status](https://travis-ci.org/kou64yama/nobushi-request.svg?branch=master)](https://travis-ci.org/kou64yama/nobushi-request)
+
 NobushiRequest is a isomorphic HTTP request library.
 
 ## Installation
