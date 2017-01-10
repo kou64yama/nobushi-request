@@ -84,4 +84,4 @@ MIT
 
 ## Author
 
-[@kojyamad](https://twitter.com/kojyamad)
+[@kou64yama](https://twitter.com/kou64yama)
