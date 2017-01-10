@@ -1,6 +1,7 @@
 {
   "name": "nobushi-request",
   "version": "0.0.0",
+  "description": "A isomorphic HTTP request library",
   "main": "lib/index.js",
   "license": "MIT",
   "dependencies": {
@@ -10,24 +11,36 @@
   },
   "devDependencies": {
     "@types/bluebird": "^3.0.37",
+    "@types/glob": "^5.0.30",
     "@types/isomorphic-fetch": "^0.0.31",
     "@types/nock": "^8.2.0",
+    "@types/node": "^6.0.59",
     "@types/query-string": "^3.0.31",
+    "@types/rimraf": "^0.0.28",
     "ava": "^0.17.0",
+    "glob": "^7.1.1",
     "nock": "^9.0.2",
     "nyc": "^10.0.0",
+    "ts-node": "^2.0.0",
     "typedoc": "^0.5.3",
     "typescript": "^2.1.4"
   },
   "scripts": {
     "test": "tsc && nyc ava",
-    "build": "tsc",
+    "clean": "ts-node tools/run clean",
+    "copy": "ts-node tools/run build",
+    "transpile": "ts-node tools/run transpile",
+    "build": "ts-node tools/run build",
     "docs": "typedoc --options typedoc.json src"
   },
-  "nyc": {
-    "reporter": [
-      "html",
-      "text-summary"
-    ]
-  }
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kou64yama/nobushi-request.git"
+  },
+  "keywords": [],
+  "author": "kou64yama <kou64yama@gmail.com>",
+  "bugs": {
+    "url": "https://github.com/kou64yama/nobushi-request/issues"
+  },
+  "homepage": "https://github.com/kou64yama/nobushi-request#readme"
 }
