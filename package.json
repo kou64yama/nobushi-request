@@ -1,0 +1,33 @@
+{
+  "name": "nobushi-request",
+  "version": "0.0.0",
+  "main": "lib/index.js",
+  "license": "MIT",
+  "dependencies": {
+    "bluebird": "^3.4.7",
+    "isomorphic-fetch": "^2.2.1",
+    "query-string": "^4.2.3"
+  },
+  "devDependencies": {
+    "@types/bluebird": "^3.0.37",
+    "@types/isomorphic-fetch": "^0.0.31",
+    "@types/nock": "^8.2.0",
+    "@types/query-string": "^3.0.31",
+    "ava": "^0.17.0",
+    "nock": "^9.0.2",
+    "nyc": "^10.0.0",
+    "typedoc": "^0.5.3",
+    "typescript": "^2.1.4"
+  },
+  "scripts": {
+    "test": "tsc && nyc ava",
+    "build": "tsc",
+    "docs": "typedoc --options typedoc.json src"
+  },
+  "nyc": {
+    "reporter": [
+      "html",
+      "text-summary"
+    ]
+  }
+}

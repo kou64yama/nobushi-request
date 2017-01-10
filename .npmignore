@@ -1,5 +1,21 @@
-lib
-docs/references
+# dotfiles
+.*
+
+# TypeScript
+tsconfig.json
+
+# Yarn lock file
+yarn.lock
+
+# TypeDoc
+typedoc.json
+
+# Sources and documents directory
+src
+docs
+
+# Test files
+lib/*.test.*
 
 # Created by https://www.gitignore.io/api/node
 
