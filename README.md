@@ -2,6 +2,12 @@
 
 NobushiRequest is a isomorphic HTTP request library.
 
+## Installation
+
+```sh
+npm install --save nobushi-request
+```
+
 ## Usage
 
 ### Basic usage
