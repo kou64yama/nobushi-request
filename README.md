@@ -79,7 +79,7 @@ const request = client.target('http://localhost:3000/api');
 request
   .path('/posts')
   .post({ title: '...', content: '...' })
-  .then(({ id, title }) => {
+  .then(({ body: { id, title }}) => {
     return request
       .path('/notify')
       .post({ message: `Posted ${title} (#${id})` });
