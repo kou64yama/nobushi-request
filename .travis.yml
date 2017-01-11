@@ -1,5 +1,8 @@
 language: node_js
 node_js:
-  - '6'
+- '6'
 script:
-  - npm run test
+- npm run test
+deploy:
+  api_key:
+    secure: DnOLgOfHJfM7Nex70nHszCyjEbHF3CfKzmTUIQYScVOvVa1XqCeM/TOrcZy8xcjl0L+0KBblS79aHupb64pXSs/gqIogq6cq5qqVHCJRao8Qkc3Buzw2Bd97mKvlrAK9cO5oZEZ249TxZtB4N9TqQIGdfffpXaBT3ezJXKx4B5mrSLrMK6gxgUy8A60fXSGwORE7Q9XdCWQDn1PGvq27AEdH24eFjTtQzUHxf//38Ntqa6niDMCDTUczff1LOLr+t2Ux3Amq7IZARXEFFuVfHY+dEzfjwjGdP2EekTGjKIu08dDhtZP0JBjEGIyh2brGra0yB1Zpu9q9SR5fukSpqJSDidPVlDwZygnqDxoK0SHVYKdJj2lqOrkk4wrWsWES9Fxcbp8d9ly5lCJQSibSOO47MpVKZWgPy4fpJF0Sk+tB7XWKIc6ymYTo9+8N3xOhr418rgaz5Wh9sM/ip8ofw2gYwVZRiYC/FaAC0Iul7WpWNI1+1/B6lOTUsRiwPIz2m8tv57OSo3NfViQqnkYDWghnV1E96LwTyvfYp6uNATappvK8yPJf8wivaOQGKFH6aIa3ctjO9AyBNg75RAUO/hKjAvh/Jo/+yFyMKrzVOvlGv5vwWCw/tiKIgKBlQ/vlYonWsmL0X8LdjmNoV6o8u1LQTTekW6aqEoPCWlxzDuw=
