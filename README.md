@@ -42,7 +42,7 @@ const client = new RequestClient();
 
 // Applies JSON.stringify() if the request has body.
 client.register({
-  response(req) {
+  request(req) {
     if (typeof req.body !== 'object') {
       return req;
     }
