@@ -1,6 +1,0 @@
-{
-  "name": "Nobushi Request References",
-  "out": "docs/references",
-  "mode": "modules",
-  "exclude": "**/*.test.ts"
-}
