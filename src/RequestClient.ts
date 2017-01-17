@@ -49,7 +49,7 @@ export interface ResponseFilter {
    * @param originalReq  The original request object.
    * @returns A converted response.
    */
-  response: (res: Response<any>, req?: Request, originalReq?: Request) =>
+  response: (res: Response<any>, req: Request, originalReq: Request) =>
     Response<any> | Promise<Response<any>>;
 }
 
