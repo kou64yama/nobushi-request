@@ -49,7 +49,7 @@ export interface ResponseFilter {
    * @param originalReq  The original request object.
    * @returns A converted response.
    */
-  response: (res: Response<any>, req?: Request, originalReq?: Request) =>
+  response: (res: Response<any>, req: Request, originalReq: Request) =>
     Response<any> | Promise<Response<any>>;
 }
 
@@ -59,10 +59,59 @@ export interface ResponseFilter {
 export type Filter = RequestFilter | ResponseFilter | (RequestFilter & ResponseFilter);
 
 /**
+ * A Request client options object containing any custom settings that you
+ * want to apply to the request.
+ */
+interface Options {
+  /**
+   * The mode you want to use for the request, e.g., `cors`, `no-cors`, or
+   * `same-origin`.
+   */
+  mode?: 'cors' | 'no-cors' | 'same-origin';
+
+  /**
+   * The request credentials you want to use for the request: `omit`,
+   * `same-origin`, or `include`. To automatically send cookies for the current
+   * domain, this option must be provided.
+   */
+  credentials?: 'omit' | 'same-origin' | 'include';
+
+  /**
+   * The cache mode you want to use for the request: `default`, `no-store`,
+   * `reload`, `no-cache`, `force-cache`, or `only-if-cached`.
+   */
+  cache?: 'default' | 'no-store' | 'reload' | 'no-cache' | 'force-cache';
+
+  /**
+   * The redurect mode to use: `follow` (automatically follow redirects),
+   * `error` (abort with an error if a redirect occurs), or `manual` (handle
+   * redirects manually).
+   */
+  redirect?: 'follow' | 'error' | 'manual';
+
+  /**
+   * A USVString specifying `no-referrer`, `client`, or a URL.
+   */
+  referrer?: string;
+
+  /**
+   * Specifies the value of the referer HTTP header. May be one of
+   * `no-referrer`, `no-referrer-when-downgrade`, `origin`,
+   * `origin-when-cross-origin`, `unsafe-url`.
+   */
+  referrerPolicy?: 'no-referrer' | 'no-referrer-when-downgrade' | 'origin' | 'origin-when-cross-origin' | 'unsafe-url';
+}
+
+/**
  * A class that sends the request.
  */
 export default class RequestClient {
+  private options: Options;
   private filters: Filter[] = [];
+
+  public constructor(options: Options = {}) {
+    this.options = { ...options };
+  }
 
   /**
    * Registers a request or response, or both filter.
@@ -99,14 +148,14 @@ export default class RequestClient {
       originalRequest,
     );
 
-    const { target = '', method, path = '', query, headers, body } = request;
+    const { target, method, path = '', query, headers, body } = request;
     const uri = `${target}/${path}`;
     const url = query ? `${uri}?${queryString.stringify(query)}` : uri;
 
-    const response = await fetch(url, { method, headers, body });
+    const response = await fetch(url, { method, headers, body, ...this.options });
 
     return await Bluebird.reduce<Filter, Response<T>>(
-      this.filters.reverse(),
+      this.filters,
       async (res, filter: ResponseFilter) =>
         (filter.response ? await filter.response(res, request, originalRequest) : res),
       response,

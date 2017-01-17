@@ -2,8 +2,9 @@ import test from 'ava';
 import * as nock from 'nock';
 import RequestClient, { Request, Response } from './RequestClient';
 
-test.beforeEach(() => {
+test.before(() => {
   nock('http://localhost')
+    .persist()
     // Echo the request body
     .post('/echo/body')
     .reply(200, (_uri: string, body: string) => body)
@@ -13,8 +14,8 @@ test.beforeEach(() => {
     .reply(200, (_uri: string, body: string) => body);
 });
 
-test.afterEach(() => {
-  nock.restore();
+test.after(() => {
+  nock.cleanAll();
 });
 
 test('request filter', async (t) => {

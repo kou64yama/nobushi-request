@@ -24,7 +24,7 @@
   "scripts": {
     "test": "tsc && nyc ava",
     "build": "tsc",
-    "docs": "typedoc --options typedoc.json src"
+    "docs": "typedoc --name \"Nobushi Request References\" --mode modules --target es2015 --exclude \"*.test.ts\" --out docs/references src"
   },
   "repository": {
     "type": "git",
