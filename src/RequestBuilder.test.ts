@@ -5,8 +5,9 @@ import RequestClient from './RequestClient';
 
 const client = new RequestClient();
 
-test.beforeEach(() => {
+test.before(() => {
   nock('http://localhost')
+    .persist()
     // Echo the request method
     .get('/')
     .reply(200, 'get')
@@ -31,8 +32,8 @@ test.beforeEach(() => {
     .reply(200, '', { 'X-Echo-Reply': (_req, _res, _body) => _req.headers['x-echo'] });
 });
 
-test.afterEach(() => {
-  nock.restore();
+test.after(() => {
+  nock.cleanAll();
 });
 
 const builder = new RequestBuilder(client, { target: 'http://localhost' });

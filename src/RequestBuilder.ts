@@ -86,13 +86,23 @@ export default class RequestBuilder {
   }
 
   /**
+   * Gets request headers object.
+   *
+   * @returns  Non-null object
+   */
+  private getHeaders(): { [name: string]: any } {
+    const { headers = {} } = this.request;
+    return headers;
+  }
+
+  /**
    * Sends the GET request, and returns the response content.
    *
    * @param T  The type of response body.
    * @returns The response content.
    */
   public get<T>(): Promise<Response<T>> {
-    const { headers = {} } = this.request;
+    const headers = this.getHeaders();
     return this.client.send({ ...this.request, method: 'get', headers });
   }
 
@@ -104,7 +114,7 @@ export default class RequestBuilder {
    * @returns The response content.
    */
   public post<T>(body?: any): Promise<Response<T>> {
-    const { headers = {} } = this.request;
+    const headers = this.getHeaders();
     return this.client.send({ ...this.request, method: 'post', headers, body });
   }
 
@@ -116,7 +126,7 @@ export default class RequestBuilder {
    * @returns The response content.
    */
   public put<T>(body?: any): Promise<Response<T>> {
-    const { headers = {} } = this.request;
+    const headers = this.getHeaders();
     return this.client.send({ ...this.request, method: 'put', headers, body });
   }
 
@@ -128,7 +138,7 @@ export default class RequestBuilder {
    * @returns The response content.
    */
   public delete<T>(body?: any): Promise<Response<T>> {
-    const { headers = {} } = this.request;
+    const headers = this.getHeaders();
     return this.client.send({ ...this.request, method: 'delete', headers, body });
   }
 }

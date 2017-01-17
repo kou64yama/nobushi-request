@@ -148,7 +148,7 @@ export default class RequestClient {
       originalRequest,
     );
 
-    const { target = '', method, path = '', query, headers, body } = request;
+    const { target, method, path = '', query, headers, body } = request;
     const uri = `${target}/${path}`;
     const url = query ? `${uri}?${queryString.stringify(query)}` : uri;
 
